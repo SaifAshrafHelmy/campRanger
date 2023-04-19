@@ -1,0 +1,53 @@
+
+
+
+  <% layout('layouts/boilerplate.ejs') %>
+
+  <div id="cluster-map"></div>
+  
+  <h1 class="mb-4"><%= pgTitle %></h1>
+  <!-- <a href="/campgrounds/new"><button>Make a New Camp</button></a> -->
+
+
+  <!-- added reverse to sort by first added -->
+    <% for(let campground of campgrounds.reverse()){ %>
+
+
+      <% const randZeroToTwo = Math.floor(0 + Math.random()*(2 - 0 + 1)) %>
+      
+
+   
+      <div class="card mb-3">
+        <div class="row">
+          <div class="col-md-4">
+            <% if (campground.images.length){ %>
+            <img class="img-fluid" src="<%= campground.images[0].url %>" alt="" style=" height: 40vh;  object-fit: cover;
+            object-position: bottom" >
+            <% } else {%>
+              <img class="img-fluid" src="https://res.cloudinary.com/dbmxu1zb8/image/upload/v1680181536/yelpCamp/l4mhmqzh2ne2tg6j24qi.jpg" alt="" style=" height: 40vh;  object-fit: cover;
+              object-position: bottom" >
+              <%}%>
+        
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title" > <%= campground.title %></h5>
+              <p class="card-text"><%= campground.description %></p>
+              <p class="card-text"><small class="text-muted"><%= campground.location %></small></p>
+              <a href="/campgrounds/<%= campground.id %>" class="btn btn-primary mt-5">View <%= campground.title %> Campground</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+      <script>
+           const mapToken  = '<%- process.env.MAPBOX_TOKEN %>'
+           const campgrounds =  { features: <%- JSON.stringify(campgrounds) %> }
+
+      </script>
+    <script src="clusterMap.js"></script>
+    <script src="main.js"></script>
+
+
+
