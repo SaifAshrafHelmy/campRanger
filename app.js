@@ -27,9 +27,11 @@ const MongoStore = require('connect-mongo');
 
 
 // mongodb://localhost:27017/yelp-camp
-// const MongoDBAtlasUrl = process.env.DB_URL;
+// const MongoDBUrl = process.env.DB_URL;
 // const dbUrl = 'mongodb://localhost:27017/yelp-camp';
-const dbUrl = process.env.DB_URL
+const dbUrl = process.env.DB_URL;
+
+
 mongoose.connect(dbUrl);
 const db = mongoose.connection;
 
@@ -37,11 +39,10 @@ db.on("error", console.error.bind(console, "mongoose connection Failed:"));
 db.once("open", () => console.log("mongoose connection succeeded"));
 
 
-const sessionSecret = process.env.sessionSecret || 'thisissdsdsudssspersketchy!!'
 
 const store = new MongoStore({
   mongoUrl: 'mongodb://localhost:27017/yelp-camp',
-  secret: sessionSecret,
+  secret:'thisisnotthesamesecret',
   touchAfter: 24*60*60, //in seconds
 
 })
@@ -49,11 +50,10 @@ store.on('error', function(e){
   console.log('SESSION STORE ERROR:', e)
 })
 
-
 const sessionConfig = {
   store,
   name: '_stsn',
-  secret: sessionSecret,
+  secret:'thisissdsdsudssspersketchy!!',
   resave:false,
   saveUninitialized:true,
   cookie:{
@@ -184,10 +184,8 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 3000;
-
-
 app.listen(port, () => {
   console.log(`express server is listening on port ${port}`);
-});
+}); 
 
 
