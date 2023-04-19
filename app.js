@@ -163,9 +163,8 @@ app.use('/', userRouter)
 
 
 app.get("/", wrapAsync(async (req, res) => {
-  const testKeyword = 'the keyword'
 
-  res.render("home", {testKeyword});
+  res.render("home",);
 })
 );
 
