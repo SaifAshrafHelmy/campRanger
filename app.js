@@ -163,9 +163,8 @@ app.use('/', userRouter)
 
 
 app.get("/", wrapAsync(async (req, res) => {
-  const reqUser = req.user;
 
-  res.render("home", {reqUser});
+  res.render("home");
 })
 );
 
