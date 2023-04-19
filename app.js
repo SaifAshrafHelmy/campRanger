@@ -104,10 +104,10 @@ app.use(mongoSanitize({
 app.use((req,res,next)=>{
 
   // this one has to be after the serialization functions
-  app.locals.currentUser = req.user;
+  res.locals.currentUser = req.user;
 
-  app.locals.success = req.flash('success')
-  app.locals.error = req.flash('error')
+  res.locals.success = req.flash('success')
+  res.locals.error = req.flash('error')
   next();
 })
 
@@ -123,7 +123,7 @@ app.use(express.static('public'))
 
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", "views");
 app.engine("ejs", ejsMate);
 
 app.use(methodOverride("_method"));
