@@ -104,10 +104,10 @@ app.use(mongoSanitize({
 app.use((req,res,next)=>{
 
   // this one has to be after the serialization functions
-  res.locals.currentUser = req.user;
+  app.locals.currentUser = req.user;
 
-  res.locals.success = req.flash('success')
-  res.locals.error = req.flash('error')
+  app.locals.success = req.flash('success')
+  app.locals.error = req.flash('error')
   next();
 })
 
@@ -163,7 +163,9 @@ app.use('/', userRouter)
 
 
 app.get("/", wrapAsync(async (req, res) => {
-  res.render("home");
+  const reqUser = req.user;
+
+  res.render("home", {reqUser});
 })
 );
 
