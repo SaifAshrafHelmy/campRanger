@@ -27,11 +27,9 @@ const MongoStore = require('connect-mongo');
 
 
 // mongodb://localhost:27017/yelp-camp
-// const MongoDBUrl = process.env.DB_URL;
+// const MongoDBAtlasUrl = process.env.DB_URL;
 // const dbUrl = 'mongodb://localhost:27017/yelp-camp';
-const dbUrl = process.env.DB_URL;
-
-
+const dbUrl = process.env.DB_URL
 mongoose.connect(dbUrl);
 const db = mongoose.connection;
 
@@ -39,10 +37,11 @@ db.on("error", console.error.bind(console, "mongoose connection Failed:"));
 db.once("open", () => console.log("mongoose connection succeeded"));
 
 
+const sessionSecret = process.env.sessionSecret || 'thisissdsdsudssspersketchy!!'
 
 const store = new MongoStore({
   mongoUrl: 'mongodb://localhost:27017/yelp-camp',
-  secret:'thisisnotthesamesecret',
+  secret: sessionSecret,
   touchAfter: 24*60*60, //in seconds
 
 })
@@ -50,10 +49,11 @@ store.on('error', function(e){
   console.log('SESSION STORE ERROR:', e)
 })
 
+
 const sessionConfig = {
   store,
   name: '_stsn',
-  secret:'thisissdsdsudssspersketchy!!',
+  secret: sessionSecret,
   resave:false,
   saveUninitialized:true,
   cookie:{
@@ -123,7 +123,7 @@ app.use(express.static('public'))
 
 
 app.set("view engine", "ejs");
-app.set("views", "views");
+app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
 
 app.use(methodOverride("_method"));
@@ -163,8 +163,7 @@ app.use('/', userRouter)
 
 
 app.get("/", wrapAsync(async (req, res) => {
-
-  res.render("home",);
+  res.render("home");
 })
 );
 
@@ -184,9 +183,9 @@ app.use((err, req, res, next) => {
   res.status(status).render('error.ejs' ,{message, status, stack})
 });
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`express server is listening on port ${port}`);
-}); 
+});
 
 
