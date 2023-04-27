@@ -40,7 +40,7 @@ db.once("open", () => console.log("mongoose connection succeeded"));
 const sessionSecret = process.env.sessionSecret || 'thisissdsdsudssspersketchy!!'
 
 const store = new MongoStore({
-  mongoUrl: 'mongodb://localhost:27017/yelp-camp',
+  mongoUrl: dbUrl,
   secret: sessionSecret,
   touchAfter: 24*60*60, //in seconds
 
