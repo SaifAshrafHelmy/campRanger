@@ -44,3 +44,9 @@ main p {
   font-size: 1.4rem;
   line-height: 1.7;
 }
+
+@media (max-width: 480px) {
+ .welcomeText{
+  font-size: 1.1rem;
+ }
+}
