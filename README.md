@@ -64,7 +64,6 @@ CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
 - Cloudinary
 
 ## File Structure
-
 ├── db
 |   ├── campground.js
 |   ├── review.js
@@ -97,6 +96,7 @@ CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
 ├── package.json
 ├── README.md
 └── .env (not included in the repository)
+
 
 
 ## Credits
