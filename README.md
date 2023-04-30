@@ -1,11 +1,15 @@
 # Hi, I'm Saif! 👋
 
 
-# campRanger Backend Project Readme
+# campRanger Backend Project
 
 This backend project is built using **Node.js**, **Express**, **MongoDB**, **EJS**, **Joi Validation**, **Passport** for login, **mongoSanitize** for sanitizing data, **Helmet** for security and protection, **Connect-Mongo** for session store, and **Cloudinary** for uploading images.
 
  The basic idea of this project is to create a platform where users can find campgrounds, add new campgrounds, and add reviews about them. Users can view, add, edit, and delete campgrounds and add and delete reviews on their show page. The project also utilizes a cluster map from **Mapbox** to show available campgrounds around the US map, and a Mapbox map inside every campground show page to show its location.
+
+## Deployment
+
+**The project is deployed using Render [here](https://campranger.onrender.com/).**
 
 
 ## Features
@@ -24,9 +28,7 @@ This backend project is built using **Node.js**, **Express**, **MongoDB**, **EJS
 - Uses Cloudinary for uploading images
 
 
-## Deployment
 
-The project is deployed using Render [here](https://campranger.onrender.com/).
 
 ## Installation
 
@@ -64,39 +66,68 @@ CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
 - Cloudinary
 
 ## File Structure
- 
-├── db
-|   ├── campground.js
-|   ├── review.js
-|   └── user.js
-├── middleware
-|   ├── index.js
-|   ├── isLoggedIn.js
-|   └── wrapAsync.js
-├── models
-|   ├── campground.js
-|   └── review.js
-├── public
-|   ├── images
-|   └── javascripts
-├── routes
-|   ├── campgrounds.js
-|   ├── index.js
-|   ├── reviews.js
-|   └── users.js
-├── utils
-|   └── middlewares.js
-├── views
-|   ├── campgrounds
-|   ├── error.ejs
-|   ├── home.ejs
-|   ├── reviews
-|   ├── users
-|   └── notfound.ejs
-├── app.js
-├── package.json
-├── README.md
-└── .env (not included in the repository)
+```
+campRanger/
+|── app.js
+|── db
+│   ├── campground.js
+│   ├── review.js
+│   └── user.js
+|── joiSchemas
+│   ├── joiCampgroundSchema.js
+│   └── joiReviewSchema.js
+|── routes
+│   ├── campgrounds.js
+│   ├── reviews.js
+│   └── users.js
+|── controllers
+│   ├── campgroundController.js
+│   ├── reviewController.js
+│   └── userController.js
+|── utils
+│   ├── AppError.js
+│   └── middlewares.js
+|── views
+│   ├── campgrounds
+│   │   ├── edit.ejs
+│   │   ├── index.ejs
+│   │   ├── new.ejs
+│   │   └── show.ejs
+│   ├── error.ejs
+│   ├── home.ejs
+│   ├── layouts
+│   │   └── boilerplate.ejs
+│   ├── notfound.ejs
+│   ├── partials
+│   │   ├── flash.ejs
+│   │   ├── footer.ejs
+│   │   └── navbar.ejs
+│   └── users
+│       ├── login.ejs
+│       └── register.ejs
+|── cloudinary
+│   └── index.js
+|── seeds
+│   ├── cities.js
+│   ├── indexSeed.js
+│   └── seedHelpers.js
+|── public
+│   ├── assets
+│   │   └── camping-favicon.png
+│   ├── BSvalidateForm.js
+│   ├── clusterMap.js
+│   ├── main.js
+│   ├── ShowPageMap.js
+│   └── stylesheets
+│       ├── app.css
+│       ├── home.css
+│       └── stars.css
+|── package.json
+|── package-lock.json
+|── README.md
+
+
+ ```
 
 
 ## Credits
