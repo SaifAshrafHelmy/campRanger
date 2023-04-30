@@ -53,14 +53,13 @@ To install and run this project, you will need to have **Node.js** and **MongoDB
 1. Clone this repository to your local machine
 2. Install dependencies using `npm install`
 3. Create a `.env` file in the root directory with the following variables:
-
+```
 DB_URL=<your-mongodb-url>
 sessionSecret=<your-session-secret>
 CLOUDINARY_CLOUD_NAME=<your-cloudinary-cloud-name>
 CLOUDINARY_API_KEY=<your-cloudinary-api-key>
 CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
-
-
+```
 
 4. Run the app using `npm start`
 5. Access the app at `http://localhost:3000`
