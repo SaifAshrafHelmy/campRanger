@@ -1,11 +1,31 @@
 # Hi, I'm Saif! 👋
 
 
-# campRanger Backend Project Readme
+# campRanger Backend Project
 
-This backend project is built using **Node.js**, **Express**, **MongoDB**, **EJS**, **Joi Validation**, **Passport** for login, **mongoSanitize** for sanitizing data, **Helmet** for security and protection, **Connect-Mongo** for session store, and **Cloudinary** for uploading images.
 
- The basic idea of this project is to create a platform where users can find campgrounds, add new campgrounds, and add reviews about them. Users can view, add, edit, and delete campgrounds and add and delete reviews on their show page. The project also utilizes a cluster map from **Mapbox** to show available campgrounds around the US map, and a Mapbox map inside every campground show page to show its location.
+**The project is deployed using Render [here](https://campranger.onrender.com/).**
+
+The main idea of this project is to create a website where people can find and share information about campgrounds. Users can look up, add, change, and delete campground listings, and they can also write and remove reviews. The website uses a special map from Mapbox to show where the campgrounds are located across the United States. Each campground also has its own map showing exactly where it is.
+
+
+
+
+This project is built using a variety of technologies to ensure its functionality, security, and user experience. Specifically, the technologies used are:
+- `Node.js`: a JavaScript runtime environment used for building server-side applications
+- `Express`: a web application framework for Node.js used for building RESTful APIs and web applications
+- `MongoDB`: a NoSQL database used for data storage and retrieval
+- `EJS`: a templating engine used for rendering dynamic HTML pages
+- `Joi Validation`: a validation library used for validating user input
+- `Passport`: an authentication middleware used for user authentication
+- `mongoSanitize`: a library used for sanitizing user input to prevent injection attacks
+- `Helmet`: a security middleware used for setting HTTP headers and adding additional security to the application
+- `Connect-Mongo`: a session store for Express applications, used for managing user sessions
+- `Cloudinary`: a cloud-based image and video management service used for uploading, storing, and delivering images efficiently.
+
+
+
+
 
 
 ## Features
@@ -24,9 +44,7 @@ This backend project is built using **Node.js**, **Express**, **MongoDB**, **EJS
 - Uses Cloudinary for uploading images
 
 
-## Deployment
 
-The project is deployed using Render [here](https://campranger.onrender.com/).
 
 ## Installation
 
@@ -35,14 +53,13 @@ To install and run this project, you will need to have **Node.js** and **MongoDB
 1. Clone this repository to your local machine
 2. Install dependencies using `npm install`
 3. Create a `.env` file in the root directory with the following variables:
-
+```
 DB_URL=<your-mongodb-url>
 sessionSecret=<your-session-secret>
 CLOUDINARY_CLOUD_NAME=<your-cloudinary-cloud-name>
 CLOUDINARY_API_KEY=<your-cloudinary-api-key>
 CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
-
-
+```
 
 4. Run the app using `npm start`
 5. Access the app at `http://localhost:3000`
@@ -64,39 +81,68 @@ CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
 - Cloudinary
 
 ## File Structure
+```
+campRanger/
+|── app.js
+|── db
+│   ├── campground.js
+│   ├── review.js
+│   └── user.js
+|── joiSchemas
+│   ├── joiCampgroundSchema.js
+│   └── joiReviewSchema.js
+|── routes
+│   ├── campgrounds.js
+│   ├── reviews.js
+│   └── users.js
+|── controllers
+│   ├── campgroundController.js
+│   ├── reviewController.js
+│   └── userController.js
+|── utils
+│   ├── AppError.js
+│   └── middlewares.js
+|── views
+│   ├── campgrounds
+│   │   ├── edit.ejs
+│   │   ├── index.ejs
+│   │   ├── new.ejs
+│   │   └── show.ejs
+│   ├── error.ejs
+│   ├── home.ejs
+│   ├── layouts
+│   │   └── boilerplate.ejs
+│   ├── notfound.ejs
+│   ├── partials
+│   │   ├── flash.ejs
+│   │   ├── footer.ejs
+│   │   └── navbar.ejs
+│   └── users
+│       ├── login.ejs
+│       └── register.ejs
+|── cloudinary
+│   └── index.js
+|── seeds
+│   ├── cities.js
+│   ├── indexSeed.js
+│   └── seedHelpers.js
+|── public
+│   ├── assets
+│   │   └── camping-favicon.png
+│   ├── BSvalidateForm.js
+│   ├── clusterMap.js
+│   ├── main.js
+│   ├── ShowPageMap.js
+│   └── stylesheets
+│       ├── app.css
+│       ├── home.css
+│       └── stars.css
+|── package.json
+|── package-lock.json
+|── README.md
 
-├── db
-|   ├── campground.js
-|   ├── review.js
-|   └── user.js
-├── middleware
-|   ├── index.js
-|   ├── isLoggedIn.js
-|   └── wrapAsync.js
-├── models
-|   ├── campground.js
-|   └── review.js
-├── public
-|   ├── images
-|   └── javascripts
-├── routes
-|   ├── campgrounds.js
-|   ├── index.js
-|   ├── reviews.js
-|   └── users.js
-├── utils
-|   └── middlewares.js
-├── views
-|   ├── campgrounds
-|   ├── error.ejs
-|   ├── home.ejs
-|   ├── reviews
-|   ├── users
-|   └── notfound.ejs
-├── app.js
-├── package.json
-├── README.md
-└── .env (not included in the repository)
+
+ ```
 
 
 ## Credits
